@@ -63,15 +63,15 @@ public class ServletIndex extends HttpServlet {
 	}
 
 	private void Sair(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = (String) request.getSession().getAttribute("email");
+//		String email = (String) request.getSession().getAttribute("email");
+//
+//		if (email == null) {
+//			request.getSession().invalidate();
+//			request.getRequestDispatcher("login.jsp").forward(request, response);
+////			response.sendRedirect("login.jsp");
+//		}
 
-		if (email == null) {
-			request.getSession().invalidate();
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-//			response.sendRedirect("login.jsp");
-		}
-
-//		request.getRequestDispatcher("login.jsp").forward(request, response);
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
 	private void contagem(HttpServletRequest request, HttpServletResponse response)

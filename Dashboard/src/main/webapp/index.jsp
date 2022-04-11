@@ -79,13 +79,14 @@ body {
 						Sair
 						<button />
 				</form>
-						<%
+					<!-- 	<
 						String email = (String) session.getAttribute("email");
 						if(email == null){
 							session.invalidate();
 							response.sendRedirect("login.jsp");
 						}
 						%>
+					-->
 			</div>
 		</div>
 	</header>

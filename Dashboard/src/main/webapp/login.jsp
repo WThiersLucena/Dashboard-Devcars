@@ -40,13 +40,13 @@
 
 			<div class="form-floating">
 				<input type="email" class="form-control" id="floatingInput"
-					name="email"> <label for="floatingInput">Email
+					name="email" required/> <label for="floatingInput">Email
 					Coorporativo</label>
 			</div>
 
 			<div class="form-floating">
 				<input type="password" class="form-control" id="floatingPassword"
-					name="senha"> <label for="floatingPassword">Senha</label>
+					name="senha" required/> <label for="floatingPassword">Senha</label>
 			</div>
 
 			
