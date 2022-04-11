@@ -79,19 +79,13 @@ body {
 						Sair
 						<button />
 				</form>
-				<c:out value="${email}" />
-				<c:choose>
-
-					<c:when test="${email != null}">
-						<c:out value="${email}" />
-					</c:when>
-					<c:otherwise>
 						<%
-						session.invalidate();
-						response.sendRedirect("login.jsp");
+						String email = (String) session.getAttribute("email");
+						if(email == null){
+							session.invalidate();
+							response.sendRedirect("login.jsp");
+						}
 						%>
-					</c:otherwise>
-				</c:choose>
 			</div>
 		</div>
 	</header>

@@ -64,9 +64,7 @@ body{
 						Sair
 						<button />
 				</form>
-				<c:out value="${email}" />
 				<c:choose>
-
 					<c:when test="${email != null}">
 						<c:out value="${email}" />
 					</c:when>

@@ -17,7 +17,7 @@ public class Conexao {
 			System.out.println("Driver carregado");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Driver n�o carregado: " + e.getMessage());
+			System.out.println("Driver não carregado: " + e.getMessage());
 		}
 	}
 	
@@ -34,12 +34,12 @@ public class Conexao {
 		try {		
 			if ((connection == null) || (connection.isClosed())) {
 				connection = DriverManager.getConnection(this.url, this.username, this.password);
-				System.out.println("Conex�o estabelecida");
+				System.out.println("Conexão estabelecida");
 				return connection;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Conex�o n�o estabelecida: " + e.getMessage());
+			System.out.println("Conexão não estabelecida: " + e.getMessage());
 		}
 	
 		return connection;
