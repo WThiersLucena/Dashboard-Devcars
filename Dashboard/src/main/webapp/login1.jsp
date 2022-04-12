@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Login ADM</title>
 
 <!-- CSS Bootstrap -->
-<link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css"
-	rel="stylesheet">
-
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous" />
 <!-- CSS Local -->
-<link rel="stylesheet" href="login1.css">
+<link rel="stylesheet" href="login1.css" />
 
 <style>
 .bd-placeholder-img {
@@ -31,13 +31,14 @@
 }
 </style>
 </head>
-<body class="text-center" style="background: black;">
-
+<body class="text-center" style="background: black">
 	<main class="form-signin">
-		<form action="ServletLogin" method="post" id="login">
+		<div class="alert alert-danger" role="alert">E-mail ou senha
+			incorretos!</div>
+		<form action="ServletLogin" method="post">
 			<img class="mb-4" src="logo-rev01.jpeg" alt="logo-devcars"
-				width="210" height="210">
-
+				width="210" height="210" />
+			
 			<div class="form-floating">
 				<input type="email" class="form-control" id="floatingInput"
 					name="email" required/> <label for="floatingInput">Email
@@ -49,19 +50,19 @@
 					name="senha" required/> <label for="floatingPassword">Senha</label>
 			</div>
 
-			
-			
-			<button class="w-100 btn btn-lg btn" type="submit" value="Entrar" name="opcao">
+			<button class="w-100 btn btn-lg btn" type="submit" value="Entrar"
+				name="opcao">
 				<!-- <a href="#"> -->
 				Entrar
 				<!-- </a> -->
 			</button>
-			<br>
+			<br />
 			<p class="mt-5 mb-3 text-muted copyright thiers">&copy; DevCars,
 				2021-2022</p>
 		</form>
 	</main>
 
+	<!-- JavaScript Bundle with Popper -->
 	<!-- JavaScript Bundle with Popper -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.Session;
+
 import br.com.dao.ClienteDAO;
 import br.com.dao.VeiculoDAO;
 
@@ -17,59 +19,73 @@ import br.com.dao.VeiculoDAO;
 @WebServlet("/ServletIndex")
 public class ServletIndex extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	ClienteDAO cD = new ClienteDAO();
 	VeiculoDAO vD = new VeiculoDAO();
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletIndex() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	public ServletIndex() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String option = request.getParameter("option");
 		if (option == null) {
 			option = "";
 		}
-		 
-		switch(option) {
-			case ("sair"):
-				this.Sair(request, response);
-				break;
-			default:
-				this.contagem(request, response);
+
+		switch (option) {
+		case ("sair"):
+			Sair(request, response);
+			break;
+		default:
+			this.contagem(request, response);
 		}
 	}
-	
+
 	private void Sair(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("Deslogar.jsp").forward(request, response);
+//		String email = (String) request.getSession().getAttribute("email");
+//
+//		if (email == null) {
+//			request.getSession().invalidate();
+//			request.getRequestDispatcher("login.jsp").forward(request, response);
+////			response.sendRedirect("login.jsp");
+//		}
+
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
-	private void contagem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{	
+	private void contagem(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setAttribute("contagem_clientes", this.cD.contarUsuarios());
 		request.setAttribute("contagem_veiculos", this.vD.contarVeiculos());
-		
+
 		request.getRequestDispatcher("./index.jsp").forward(request, response);
 	}
-	
-	//private void contagemVeiculos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{	
-		//request.setAttribute("contagem_veiculos", this.vD.contarVeiculos());
-		//request.getRequestDispatcher("./index.jsp").forward(request, response);
-	//}
+
+	// private void contagemVeiculos(HttpServletRequest request, HttpServletResponse
+	// response) throws ServletException, IOException{
+	// request.setAttribute("contagem_veiculos", this.vD.contarVeiculos());
+	// request.getRequestDispatcher("./index.jsp").forward(request, response);
+	// }
 
 }
