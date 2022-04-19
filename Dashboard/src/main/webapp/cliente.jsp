@@ -144,13 +144,24 @@ h3 {
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="navbar-nav col-12 col-md-4 col-lg-2">
+		<div class="navbar-nav col-12 col-md-1 col-lg-1">
+
 			<div class="nav-item text-nowrap">
 				<form action="ServletIndex" method="post">
-					<button name="option" value="sair">
-						Sair
-					<button />
+					<a href="login.jsp" name="option" value="sair"> Sair </a>
 				</form>
+
+
+				<c:choose>
+					<c:when test="${applicationScope.email != null}">
+					Olá, ${applicationScope.email}
+					</c:when>
+					<c:otherwise>
+						<%
+						response.sendRedirect("login.jsp");
+						%>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</header>

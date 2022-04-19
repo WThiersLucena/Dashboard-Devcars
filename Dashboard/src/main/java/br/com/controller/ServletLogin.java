@@ -40,9 +40,9 @@ public class ServletLogin extends HttpServlet {
 	case ("insert"): 
 		Insert(request, response);
 		break;
-	case ("sair"): 
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-		break;
+//	case ("sair"): 
+//		request.getRequestDispatcher("index.jsp").forward(request, response);
+//		break;
 	case ("frmLogin"): 
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		break;

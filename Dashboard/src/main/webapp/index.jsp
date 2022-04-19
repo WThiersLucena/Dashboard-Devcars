@@ -75,18 +75,20 @@ body {
 
 			<div class="nav-item text-nowrap">
 				<form action="ServletIndex" method="post">
-					<button name="option" value="sair">
-						Sair
-						<button />
+					<a href="login.jsp" name="option" value="sair"> Sair </a>
 				</form>
-					<!-- 	<
-						String email = (String) session.getAttribute("email");
-						if(email == null){
-							session.invalidate();
-							response.sendRedirect("login.jsp");
-						}
+
+
+				<c:choose>
+					<c:when test="${applicationScope.email != null}">
+					Olá, ${applicationScope.email}
+					</c:when>
+					<c:otherwise>
+						<%
+						response.sendRedirect("login.jsp");
 						%>
-					-->
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</header>

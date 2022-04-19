@@ -61,19 +61,16 @@
 
 			<div class="nav-item text-nowrap">
 				<form action="ServletIndex" method="post">
-					<button name="option" value="sair">
-						Sair
-						<button />
+					<a href="login.jsp" name="option" value="sair"> Sair </a>
 				</form>
-				<c:out value="${email}" />
-				<c:choose>
 
-					<c:when test="${email != null}">
-						<c:out value="${email}" />
+
+				<c:choose>
+					<c:when test="${applicationScope.email != null}">
+					Olá, ${applicationScope.email}
 					</c:when>
 					<c:otherwise>
 						<%
-						session.invalidate();
 						response.sendRedirect("login.jsp");
 						%>
 					</c:otherwise>
