@@ -148,13 +148,13 @@ h3 {
 
 			<div class="nav-item text-nowrap">
 				<form action="ServletIndex" method="post">
-					<a href="login.jsp" name="option" value="sair"> Sair </a>
+					<button href="login.jsp" name="option" value="sair" type="submit"> Sair </button>
 				</form>
 
 
 				<c:choose>
-					<c:when test="${applicationScope.email != null}">
-					Olá, ${applicationScope.email}
+					<c:when test="${sessionScope.email != null}">
+					Olá, ${sessionScope.email}
 					</c:when>
 					<c:otherwise>
 						<%
