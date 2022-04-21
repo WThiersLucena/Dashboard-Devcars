@@ -7,8 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.catalina.Session;
+import javax.servlet.http.HttpSession;
 
 import br.com.dao.ClienteDAO;
 import br.com.dao.VeiculoDAO;
@@ -63,7 +62,11 @@ public class ServletIndex extends HttpServlet {
 	}
 
 	private void Sair(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("Deslogar.jsp").forward(request, response);
+//		request.getRequestDispatcher("Deslogar.jsp").forward(request, response);
+		HttpSession session = request.getSession(false);
+		if (session != null)
+			session.invalidate();
+		request.getRequestDispatcher("./login.jsp").forward(request, response);
 	}
 
 	private void contagem(HttpServletRequest request, HttpServletResponse response)

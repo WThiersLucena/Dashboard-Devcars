@@ -59,7 +59,7 @@ public class ServletLogin extends HttpServlet {
 		if(DAO.conferencia(email, senha) != null) {
 			System.out.println("Qualquer coisa");
 			Login login = DAO.conferencia(email, senha);
-			request.getServletContext().setAttribute("email", login.getUsuario());
+			request.getSession().setAttribute("email", login.getUsuario());
 			request.getRequestDispatcher("ServletIndex").forward(request, response);
 //			response.sendRedirect("index.jsp"); 
 			
