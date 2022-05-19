@@ -58,9 +58,21 @@ body{
 		<div class="navbar-nav col-12 col-md-1 col-lg-1">
 
 			<div class="nav-item text-nowrap">
-				<form action="ServletFornecedor" method="post">
-					<button type="submit" name="optionFornecedor" value="sair">Sair</>
+				<form action="ServletIndex" method="post">
+					<button href="login.jsp" name="option" value="sair" type="submit"> Sair </button>
 				</form>
+
+
+				<c:choose>
+					<c:when test="${sessionScope.email != null}">
+					Olá, ${sessionScope.email}
+					</c:when>
+					<c:otherwise>
+						<%
+						response.sendRedirect("login.jsp");
+						%>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</header>

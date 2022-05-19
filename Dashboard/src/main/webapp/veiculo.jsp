@@ -60,17 +60,16 @@ body{
 
 			<div class="nav-item text-nowrap">
 				<form action="ServletIndex" method="post">
-					<button name="option" value="sair">
-						Sair
-						<button />
+					<button href="login.jsp" name="option" value="sair" type="submit"> Sair </button>
 				</form>
+
+
 				<c:choose>
-					<c:when test="${email != null}">
-						<c:out value="${email}" />
+					<c:when test="${sessionScope.email != null}">
+					Olá, ${sessionScope.email}
 					</c:when>
 					<c:otherwise>
 						<%
-						session.invalidate();
 						response.sendRedirect("login.jsp");
 						%>
 					</c:otherwise>

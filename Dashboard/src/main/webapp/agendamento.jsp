@@ -13,12 +13,12 @@
 	rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
-body{
+body {
 	font-family: 'Questrial', sans-serif;
 }
-
 
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -58,12 +58,11 @@ body{
 	text-shadow: 3px 2px 3px rgba(150, 150, 150, 0.68);
 }
 
-.container-style{
+.container-style {
 	border-left: 2px solid #d9d9d9;
 	border-radius: 4px;
 	margin-bottom: 15px;
 }
-
 
 h3 {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
@@ -75,45 +74,41 @@ h3 {
 	color: #545454;
 }
 
-.container-style span{
+.container-style span {
 	color: #7a7a7a;
 	text-shadow: 0 1px 1px 0 #959595;
 }
 
-.container-style p{
+.container-style p {
 	margin: 0;
 	color: #7a7a7a;
 	text-shadow: 0 1px 1px 0 #959595;
 }
 
 .font-size-09 {
-		font-size: 1rem !important;
-	}
+	font-size: 1rem !important;
+}
 
 @media ( min-width : 768px) {
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
-	
 	.font-size-09 {
 		font-size: 0.9rem !important;
 	}
 }
 
 @media ( max-width : 450px) {
-	.accordion-button{
+	.accordion-button {
 		font-size: 13px;
 	}
-	
-	h3{
+	h3 {
 		font-size: 14px;
 	}
-	
-	p, span{
+	p, span {
 		padding-left: 7px;
 		font-size: 13px;
 	}
-	
 	.font-size-09 {
 		font-size: 1rem !important;
 	}
@@ -125,22 +120,34 @@ h3 {
 </head>
 <body>
 
-<header
-		class="navbar navbar-dark sticky-top bg-dark p-0 shadow">
+	<header class="navbar navbar-dark sticky-top bg-dark p-0 shadow">
 		<a class="navbar-brand col-3 col-md-3 col-lg-2 me-0 px-3" href="#">DevCars</a>
-		<button class="navbar-toggler position-absolute d-md-none col-2 col-md-1 col-lg-2 collapsed"
+		<button
+			class="navbar-toggler position-absolute d-md-none col-2 col-md-1 col-lg-2 collapsed"
 			type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
 			aria-controls="sidebarMenu" aria-expanded="false"
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		
+
 		<div class="navbar-nav col-12 col-md-1 col-lg-1">
 
 			<div class="nav-item text-nowrap">
-				<form action="ServletAgendamento" method="post">
-					<button type="submit" name="option" value="sair">Sair</>
+				<form action="ServletIndex" method="post">
+					<button href="login.jsp" name="option" value="sair" type="submit"> Sair </button>
 				</form>
+
+
+				<c:choose>
+					<c:when test="${sessionScope.email != null}">
+					Olá, ${sessionScope.email}
+					</c:when>
+					<c:otherwise>
+						<%
+						response.sendRedirect("login.jsp");
+						%>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</header>
@@ -237,24 +244,20 @@ h3 {
 													<c:out value="${a.cod_agendamento}" />
 												</p>
 											</div>
-											
+
 
 											<div class="col-xs-12 col-md-5 text-start fw-bolder">
-												<span class="d-none d-sm-block">Veículo: </span>
-												<span><c:out value="${a.marca_veiculo} ${a.modelo_veiculo}  ${a.nome_cor} " />
+												<span class="d-none d-sm-block">Veículo: </span> <span><c:out
+														value="${a.marca_veiculo} ${a.modelo_veiculo}  ${a.nome_cor} " />
 												</span>
 											</div>
-											
+
 
 											<div class="col-xs-12 col-md-3 text-xs-center fw-bolder mt-2">
-												<span>
-													Data de reserva: 
-													</span>
-													<span><fmt:formatDate value="${a.data_reserva}"
-														pattern="dd/MM/yyyy" />
-												</span>
+												<span> Data de reserva: </span> <span><fmt:formatDate
+														value="${a.data_reserva}" pattern="dd/MM/yyyy" /> </span>
 											</div>
-											
+
 										</div>
 
 									</button>
@@ -265,9 +268,9 @@ h3 {
 									data-bs-parent="#accordionFlushExample">
 									<div class="accordion-body ps-4 pe-5">
 										<div class="row">
-										
+
 											<div class="col-12 col-lg-4 container-style">
-											
+
 												<div class="cliente">
 													<h3 class="">Cliente</h3>
 													<p class="">
@@ -313,7 +316,7 @@ h3 {
 														<c:out value="${a.telefone_cliente}" />
 													</p>
 												</div>
-												
+
 											</div>
 
 
@@ -340,11 +343,13 @@ h3 {
 													<c:out value="${a.numero_chassi}" />
 												</span>
 												<div>
-													<span class="tex-end"> Valor do veículo: </span>
-													<span class="text-start fw-bold"> R$ <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${a.preco_veiculo}" />
+													<span class="tex-end"> Valor do veículo: </span> <span
+														class="text-start fw-bold"> R$ <fmt:formatNumber
+															type="number" maxFractionDigits="2" minFractionDigits="2"
+															value="${a.preco_veiculo}" />
 													</span>
 												</div>
-												
+
 											</div>
 
 
@@ -355,26 +360,34 @@ h3 {
 													<fmt:formatNumber type="number" maxFractionDigits="2"
 														minFractionDigits="2" value="${a.taxa_agendamento}" />
 												</p>
-												
+
 												<h3 class="tex-end">Forma de pagamento:</h3>
-												<p class="text-start"><c:out value="${a.descricao_forma_pagamento}" /></p>
-												
-													<c:choose>
-														<c:when test="${fn:length(a.pagamento)==16}">
-															<h3 class="tex-end">Número do cartão: </h3>
-															<p class="text-start"><c:out value="${a.pagamento}" /></p>
-														</c:when>
+												<p class="text-start">
+													<c:out value="${a.descricao_forma_pagamento}" />
+												</p>
 
-														<c:when test="${fn:length(a.pagamento)==32}">
-															<h3 class="tex-end">Id transação: </h3>
-															<p class="text-start"><c:out value="${a.pagamento}" /></p>
-														</c:when>
+												<c:choose>
+													<c:when test="${fn:length(a.pagamento)==16}">
+														<h3 class="tex-end">Número do cartão:</h3>
+														<p class="text-start">
+															<c:out value="${a.pagamento}" />
+														</p>
+													</c:when>
 
-														<c:otherwise>
-															<h3 class="tex-end">Código de barras: </h3>
-															<p class="text-start"><c:out value="${a.pagamento}" /></p>
-														</c:otherwise>
-													</c:choose>
+													<c:when test="${fn:length(a.pagamento)==32}">
+														<h3 class="tex-end">Id transação:</h3>
+														<p class="text-start">
+															<c:out value="${a.pagamento}" />
+														</p>
+													</c:when>
+
+													<c:otherwise>
+														<h3 class="tex-end">Código de barras:</h3>
+														<p class="text-start">
+															<c:out value="${a.pagamento}" />
+														</p>
+													</c:otherwise>
+												</c:choose>
 											</div>
 										</div>
 									</div>
