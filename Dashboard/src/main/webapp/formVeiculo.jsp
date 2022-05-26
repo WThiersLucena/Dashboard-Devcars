@@ -68,9 +68,9 @@ body {
 		
 		<div class="navbar-nav col-12 col-md-1 col-lg-1">
 
-			<div class="nav-item text-nowrap">
-				<form action="ServletIndex" method="post">
-					<button href="login.jsp" name="option" value="sair" type="submit"> Sair </button>
+			<div class="nav-item text-nowrap d-flex align-items-end">
+				<form action="ServletIndex" method="post" class="">
+					<button href="login.jsp" class="btn btn-light" name="option" value="sair" type="submit"> Sair </button>
 				</form>
 
 
@@ -178,7 +178,7 @@ body {
 										required>
 										<option selected>SELECIONE A MARCA</option>
 										<c:forEach var="marca" items="${listMarca}">
-											
+											<option value="${marca.cod_marca}">${marca.marca_veiculo}</option>
 										</c:forEach>
 									</select>
 								</div>

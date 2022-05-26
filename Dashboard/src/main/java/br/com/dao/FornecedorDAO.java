@@ -23,7 +23,7 @@ public class FornecedorDAO {
 		Connection con = c.getConnection();
 		
 		try {
-			PreparedStatement p = con.prepareStatement("insert into tb_fornecedor (cnpj, razao_social, inscricao_estadual, email_fornecedor, telefone_fornecedor, seAtivo) values (?, ?, ?, ?, ?, true)");
+			PreparedStatement p = con.prepareStatement("insert into tb_fornecedor (cnpj, razao_social, inscricao_estadual, email_fornecedor, telefone_fornecedor, se_ativo) values (?, ?, ?, ?, ?, true)");
 			p.setString(1, addFornecedor.getCnpj()); 
 			p.setString(2, addFornecedor.getRazao_social());
 			p.setString(3, addFornecedor.getInscricao_estadual());
@@ -49,7 +49,7 @@ public class FornecedorDAO {
 		Connection con = c.getConnection();
 		ArrayList<Fornecedor> listaFornecedor = new ArrayList<Fornecedor>();
 		try {
-			PreparedStatement p = con.prepareStatement("select * from tb_fornecedor tf where seAtivo != 0;");
+			PreparedStatement p = con.prepareStatement("select * from tb_fornecedor tf where se_ativo != 0;");
 			ResultSet r = p.executeQuery();			
 			
 			while (r.next()) {
@@ -82,7 +82,7 @@ public class FornecedorDAO {
 			p.setInt(1, cod_fornecedor);
 			System.out.println(p);
 			p.executeUpdate();
-			System.out.println("Remoção do fornecedor: executado");
+			System.out.println("RemoÃ§Ã£o do fornecedor: executado");
 			p.close();
 		} finally {
 			
@@ -94,14 +94,14 @@ public class FornecedorDAO {
 	
 	
 	
-	//método que desativa chave estrangeira
+	//mï¿½todo que desativa chave estrangeira
 	public void desativaSupplier(Integer cod_fornecedor) {
 		
 		Conexao c = Conexao.getInstance();
 		Connection con = c.getConnection();
 		
 		try {
-			PreparedStatement p = con.prepareStatement("update tb_fornecedor set seAtivo = 0 where cod_fornecedor = ?");
+			PreparedStatement p = con.prepareStatement("update tb_fornecedor set se_ativo = 0 where cod_fornecedor = ?");
 			p.setInt(1, cod_fornecedor);
 			
 			System.out.println(p);
@@ -135,7 +135,7 @@ public class FornecedorDAO {
 			p.setInt(6, updateSupplier.getCod_fornecedor());
 			System.out.println(p);
 			p.executeUpdate();
-			System.out.println("Atualização Fornecedor: executado");
+			System.out.println("AtualizaÃ§Ã£o Fornecedor: executado");
 			p.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
